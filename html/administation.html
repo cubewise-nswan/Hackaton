@@ -1,4 +1,4 @@
-<div ng-controller="administationCtrl">
+<div ng-controller="administationCtrl" ng-if="$root.titles['Year'] != '' && $root.titles['Region'] != '' && $root.titles['Version'] != ''">
 
         <tm1-ui-element-list
             tm1-instance="dev"
@@ -8,9 +8,9 @@
             ng-model="lists.region">
          </tm1-ui-element-list>
 
-    <div class="row">
+    <div class="row" >
         <div class="col-md-6">
-            <h1><i class="fa fa-wrench"></i> Data Administation</h1>
+            <h1><i class="fa fa-wrench"></i> Data Administation {{$root.titles['Year']}} | {{$root.titles['Region']}} | {{$root.titles['Version']}}</h1>
         </div>
         <div class="offset-md-11 col-md-6">
             <div class="row">

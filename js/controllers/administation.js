@@ -19,9 +19,9 @@ app.controller('administationCtrl', ['$scope', '$rootScope', '$log', '$tm1Ui', '
         fromOperatingProfit:[]
     };
 	
-    $scope.selections.version='Actual';
-    $scope.selections.year='2012';
-    $scope.selections.currency='Local';
-    $scope.selections.department='1';
+    $scope.selections.version=$rootScope.titles['Version'];
+    $scope.selections.year=$rootScope.titles['Year'];
+    $scope.selections.currency=$rootScope.titles['Currency'];
+    $scope.selections.department=$rootScope.titles['Department'];
     
 }]);
