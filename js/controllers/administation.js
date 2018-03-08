@@ -9,11 +9,15 @@ app.controller('administationCtrl', ['$scope', '$rootScope', '$log', '$tm1Ui', '
     */
     
     $scope.defaults = {};
-    $scope.selections = {};
+    $scope.selections = {
+        version:'Actual'
+    };
     $scope.lists = {};
     $scope.values = {};
     $scope.page = {};
-	$scope.page.table = {};
+	$scope.page.table = {
+        fromOperatingProfit:[]
+    };
 	
     $scope.selections.version='Actual';
     $scope.selections.year='2012';
