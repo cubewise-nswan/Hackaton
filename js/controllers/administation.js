@@ -1,4 +1,4 @@
-app.controller('administationCtrl', ['$scope', '$rootScope', '$log', '$tm1Ui', function($scope, $rootScope, $log, $tm1Ui) {
+app.controller('administationCtrl', ['$scope', '$rootScope', '$log', '$tm1Ui', '$location', function($scope, $rootScope, $log, $tm1Ui, $location) {
 	 /*
     *     defaults.* are variables that are declared once and are changed in the page, otherwise known as constants in programming languages
     *     lists.* should be used to store any lists that are used with ng-repeat, i.e. tm1-ui-element-list
@@ -12,4 +12,12 @@ app.controller('administationCtrl', ['$scope', '$rootScope', '$log', '$tm1Ui', f
     $scope.selections = {};
     $scope.lists = {};
     $scope.values = {};
+    $scope.page = {};
+	$scope.page.table = {};
+	
+    $scope.selections.version='Actual';
+    $scope.selections.year='2012';
+    $scope.selections.currency='Local';
+    $scope.selections.department='1';
+    
 }]);
