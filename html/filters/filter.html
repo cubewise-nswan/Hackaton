@@ -1,3 +1,5 @@
+
+
 <h3 class="text-muted">Criteria</h3>
   
 <div class="row">
@@ -5,7 +7,7 @@
    Year
   </div>
   <div class="col-md-3">
-      <tm1-ui-subnm tm1-instance="dev" tm1-dimension="Year" tm1-select-only="true" tm1-default-element="2012" ng-model="page.titles['Year']"></tm1-ui-subnm>
+      <tm1-ui-subnm tm1-instance="dev" tm1-dimension="Year" tm1-select-only="true" tm1-default-element="2012" ng-model="$root.titles['Year']"></tm1-ui-subnm>
   </div>
   <div class="col-md-6">
     
@@ -16,7 +18,7 @@
    General Ledger Measure
   </div>
   <div class="col-md-3">
-      <tm1-ui-subnm tm1-instance="dev" tm1-dimension="General Ledger Measure" tm1-select-only="true" tm1-default-element="Amount" ng-model="page.titles['General Ledger Measure']"></tm1-ui-subnm>
+      <tm1-ui-subnm tm1-instance="dev" tm1-dimension="General Ledger Measure" tm1-select-only="true" tm1-default-element="Amount" ng-model="$root.titles['General Ledger Measure']"></tm1-ui-subnm>
   </div>
   <div class="col-md-6">
     
@@ -27,7 +29,7 @@
    Currency
   </div>
   <div class="col-md-3">
-      <tm1-ui-subnm tm1-instance="dev" tm1-dimension="Currency" tm1-select-only="true" tm1-subset="Default" tm1-default-element="Local" ng-model="page.titles['Currency']"></tm1-ui-subnm>
+      <tm1-ui-subnm tm1-instance="dev" tm1-dimension="Currency" tm1-select-only="true" tm1-subset="Default" tm1-default-element="Local" ng-model="$root.titles['Currency']"></tm1-ui-subnm>
   </div>
   <div class="col-md-6">
     
@@ -38,7 +40,7 @@
    Region
   </div>
   <div class="col-md-3">
-      <tm1-ui-subnm tm1-instance="dev" tm1-dimension="Region" tm1-select-only="true" tm1-default-element="3" ng-model="page.titles['Region']"></tm1-ui-subnm>
+      <tm1-ui-subnm tm1-instance="dev" tm1-dimension="Region" tm1-select-only="true" tm1-default-element="3" ng-model="$root.titles['Region']"></tm1-ui-subnm>
   </div>
   <div class="col-md-6">
     
@@ -49,7 +51,7 @@
    Department
   </div>
   <div class="col-md-3">
-      <tm1-ui-subnm tm1-instance="dev" tm1-dimension="Department" tm1-select-only="true" tm1-default-element="2" ng-model="page.titles['Department']"></tm1-ui-subnm>
+      <tm1-ui-subnm tm1-instance="dev" tm1-dimension="Department" tm1-select-only="true" tm1-default-element="2" ng-model="$root.titles['Department']"></tm1-ui-subnm>
   </div>
   <div class="col-md-6">
     
@@ -60,7 +62,7 @@
    Version
   </div>
   <div class="col-md-3">
-      <tm1-ui-subnm tm1-instance="dev" tm1-dimension="Version" tm1-select-only="true" tm1-default-element="1" ng-model="page.titles['Version']"></tm1-ui-subnm>
+      <tm1-ui-subnm tm1-instance="dev" tm1-dimension="Version" tm1-select-only="true" tm1-default-element="1" ng-model="$root.titles['Version']"></tm1-ui-subnm>
   </div>
   <div class="col-md-6">
     
@@ -72,7 +74,7 @@
     Suppress Zeroes
   </div>
   <div class="col-md-3">
-    <select class="form-control" ng-init="page.suppressZero = 'none'" ng-model="page.suppressZero">
+    <select class="form-control" ng-init="$root.suppressZero = 'none'" ng-model="$root.suppressZero">
       <option value="none">Do not Suppress Zeroes</option>
       <option value="row">Suppress Zero on Rows</option>
     </select>
@@ -80,3 +82,4 @@
   <div class="col-md-6">
   </div>
 </div>
+ 
