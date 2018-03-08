@@ -1,0 +1,10 @@
+[
+  {
+    "label": "PandL",
+    "icon_class": "fa-file-text-o",
+    "data": {
+      "page": "pandl"
+    },
+    "expanded": false
+  }
+]

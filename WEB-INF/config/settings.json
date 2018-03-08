@@ -8,7 +8,7 @@
   },
   "showSamplesMenu": false,
   "showAdminMenu": false,
-  "showSystemMenu": true,
+  "showSystemMenu": false,
   "applicationName": "Canvas",
   "theme": "default",
   "adminTheme": "default",
@@ -86,7 +86,7 @@
   "printPageCheckAttempts": 100,
   "enableSecurityCheck": false,
   "showWatchCounter": false,
-  "cacheTimeLapseInMinutes": 1,
+  "cacheTimeLapseInMinutes": 0,
   "cacheGlobalTimeoutInMinutes": 5,
   "cacheSessionTimeoutInMinutes": 5,
   "enablePopupOnLogin": true
