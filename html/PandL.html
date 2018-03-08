@@ -1,4 +1,4 @@
-<div ng-controller="PandLCtrl">
+<div ng-controller="PandLCtrl" ng-init="showColumn = false;">
 
   <style>
     .tm1-ui-dbr {
@@ -15,13 +15,11 @@
     }
   </style>
 
-  <h1>
-    <span style="float: left; width: 50px; "><i ng-if="$root.isLoading"  class="fa fa-cog fa-spin" ></i><i ng-if="!$root.isLoading" class="fa fa-cube"></i></span> PandL
-  </h1>
   
-  <h3 class="text-muted">Template</h3> 
-  
+   
+   <div class="inline-block-right btn-primary" ng-click="showColumn = !showColumn"><i class="fa fa-ellipsis-h fa-2x"></i>  </div>
   <div class="table-responsive" ng-init="$root.size = 10">
+     
     <tm1-ui-rpt-view tm1-instance="dev" tm1-cube="General Ledger" ng-model="data" tm1-suppress-zero="{{$root.suppressZero}}" tm1-page-size="{{$root.size}}">
       <tm1-ui-rpt-config>
         <tm1-ui-rpt-title tm1-dimension="Year" tm1-element="{{$root.titles['Year']}}"></tm1-ui-rpt-title>
@@ -38,25 +36,16 @@
       </tm1-ui-rpt-config>
       
       <tm1-ui-rpt-template>
+  
         <table id="af1" class="table table-condensed">
+          
           <thead>
             
               <tr>
                 <th>Account</th>
-              
-                <th class="text-center">Year</th>
-                <th class="text-center">Jan</th>
-                <th class="text-center">Feb</th>
-                <th class="text-center">Mar</th>
-                <th class="text-center">Apr</th>
-                <th class="text-center">May</th>
-                <th class="text-center">Jun</th>
-                <th class="text-center">Jul</th>
-                <th class="text-center">Aug</th>
-                <th class="text-center">Sep</th>
-                <th class="text-center">Oct</th>
-                <th class="text-center">Nov</th>
-                <th class="text-center">Dec</th>
+                
+                <th ng-show="$index > 0 && !showColumn ? false:true " ng-class="$index > 0 ? 'text-center':'text-right'" ng-repeat = "item in $root.period"  >{{item.alias}}</th>
+                 
               </tr>
               
             
@@ -65,45 +54,11 @@
             <tr ng-repeat="rowData in data.rows track by $index" ng-if="rowData.inPage">
               <td tm1-ui-rpt-row-element="rowData" tm1-dimension="Account"></td>
             
-              <td class="text-right">
-                <tm1-ui-dbr tm1-rpt-view-model="data" tm1-rpt-row-cell="rowData.getCell('Year')"></tm1-ui-dbr>
+              <td class="text-right" ng-show="$index > 0 && !showColumn ? false:true "  ng-repeat = "column in $root.period">
+                <tm1-ui-dbr tm1-rpt-view-model="data"  tm1-data-decimal="1" tm1-rpt-row-cell="rowData.getCell(column.key)" ng-model="cellValue[$index][column.key]"></tm1-ui-dbr>
+            
               </td>
-              <td class="text-right">
-                <tm1-ui-dbr tm1-rpt-view-model="data" tm1-rpt-row-cell="rowData.getCell('01')"></tm1-ui-dbr>
-              </td>
-              <td class="text-right">
-                <tm1-ui-dbr tm1-rpt-view-model="data" tm1-rpt-row-cell="rowData.getCell('02')"></tm1-ui-dbr>
-              </td>
-              <td class="text-right">
-                <tm1-ui-dbr tm1-rpt-view-model="data" tm1-rpt-row-cell="rowData.getCell('03')"></tm1-ui-dbr>
-              </td>
-              <td class="text-right">
-                <tm1-ui-dbr tm1-rpt-view-model="data" tm1-rpt-row-cell="rowData.getCell('04')"></tm1-ui-dbr>
-              </td>
-              <td class="text-right">
-                <tm1-ui-dbr tm1-rpt-view-model="data" tm1-rpt-row-cell="rowData.getCell('05')"></tm1-ui-dbr>
-              </td>
-              <td class="text-right">
-                <tm1-ui-dbr tm1-rpt-view-model="data" tm1-rpt-row-cell="rowData.getCell('06')"></tm1-ui-dbr>
-              </td>
-              <td class="text-right">
-                <tm1-ui-dbr tm1-rpt-view-model="data" tm1-rpt-row-cell="rowData.getCell('07')"></tm1-ui-dbr>
-              </td>
-              <td class="text-right">
-                <tm1-ui-dbr tm1-rpt-view-model="data" tm1-rpt-row-cell="rowData.getCell('08')"></tm1-ui-dbr>
-              </td>
-              <td class="text-right">
-                <tm1-ui-dbr tm1-rpt-view-model="data" tm1-rpt-row-cell="rowData.getCell('09')"></tm1-ui-dbr>
-              </td>
-              <td class="text-right">
-                <tm1-ui-dbr tm1-rpt-view-model="data" tm1-rpt-row-cell="rowData.getCell('10')"></tm1-ui-dbr>
-              </td>
-              <td class="text-right">
-                <tm1-ui-dbr tm1-rpt-view-model="data" tm1-rpt-row-cell="rowData.getCell('11')"></tm1-ui-dbr>
-              </td>
-              <td class="text-right">
-                <tm1-ui-dbr tm1-rpt-view-model="data" tm1-rpt-row-cell="rowData.getCell('12')"></tm1-ui-dbr>
-              </td>
+             
             
             </tr>
           </tbody>
