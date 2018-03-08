@@ -1,0 +1,21 @@
+.fixed-header{
+    padding:20px;
+    left:60px; 
+    padding-top:60px;
+    display:block;
+    background-color:#ccc;
+    width:100%; 
+ 
+}
+.tm1-ui-rpt-row-element {
+    min-width:300px !important;
+
+}
+.inline-block-right{
+    float:right;
+    padding:5px;
+    
+    display:inline-block;
+    right:0px;
+    top:0px;
+}
