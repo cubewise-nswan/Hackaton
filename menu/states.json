@@ -2,5 +2,9 @@
   "pandl": {
     "url": "/pandl",
     "templateUrl": "html/PandL.html"
+  },
+  "administation": {
+    "url": "/administation",
+    "templateUrl": "html/administation.html"
   }
 }

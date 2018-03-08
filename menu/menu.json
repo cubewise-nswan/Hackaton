@@ -6,5 +6,13 @@
       "page": "pandl"
     },
     "expanded": false
+  },
+  {
+    "label": "administation",
+    "icon_class": "fa-file-text-o",
+    "data": {
+      "page": "administation"
+    },
+    "expanded": false
   }
 ]
