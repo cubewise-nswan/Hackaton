@@ -23,5 +23,9 @@ app.controller('administationCtrl', ['$scope', '$rootScope', '$log', '$tm1Ui', '
     $scope.selections.year=$rootScope.titles['Year'];
     $scope.selections.currency=$rootScope.titles['Currency'];
     $scope.selections.department=$rootScope.titles['Department'];
-    
+
+   
 }]);
+
+ 
+    

@@ -1,0 +1,33 @@
+ <table class="table table-striped">
+                      <tr>
+                          <th>Region</th>
+                          <th>Operating Profit</th>
+                          <th>Satuation</th>
+                      </tr>
+                      <tr ng-repeat="item in listsRegion track by $index">
+                          <td>{{item.alias}}
+                            
+                          </td>
+                        
+                          <td>
+                            <tm1-ui-dbr-read-only
+                                tm1-instance="dev"
+                                tm1-cube="General Ledger"
+                                tm1-elements="{{selections.version}},{{selections.year}},Year,{{selections.currency}},{{item.key}},{{selections.department}},Operating Profit,Amount"
+                                tm1-format-percentage="false"
+                                tm1-format-parenthesis="true"
+                                ng-model="page.table.fromOperatingProfit[$index]">
+                            </tm1-ui-dbr-read-only>
+                          </td>
+                          <td>
+                                <div class="progress" ng-if="page.table.fromOperatingProfit[$index] && page.fromTotalOperatingProfit">
+                                        <div class="progress-bar" 
+                                        role="progressbar" 
+                                        aria-valuenow="{{page.table.fromOperatingProfit[$index]}}" 
+                                        aria-valuemin="0" 
+                                        aria-valuemax="{{page.fromTotalOperatingProfit}}" 
+                                        style="width: {{(page.table.fromOperatingProfit[$index] / page.fromTotalOperatingProfit)*100 }}%;"><span class="sr-only"></span></div>
+                                </div>                            
+                          </td>
+                      </tr>
+                  </table>
