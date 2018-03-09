@@ -11,7 +11,7 @@
     <div class="row" >
         <div class="col-md-6 col-xs-12">
             <h3><i class="fa fa-wrench"></i> Data Administation <br />
-            <small>{{$root.titles['Year']}} | <tm1-ui-dbra tm1-instance="dev" tm1-dimension="Region" tm1-element="{{$root.titles['Region']}}" tm1-attribute="Description" tm1-read-only="true"></tm1-ui-dbra> | 
+            <small>{{$root.titles['Year']}} |  
             <tm1-ui-dbra tm1-instance="dev" tm1-dimension="Version" tm1-element="{{$root.titles['Version']}}" tm1-attribute="Description" tm1-read-only="true"></tm1-ui-dbra></small></h3>
         </div>
         <div class="col-md-6 col-xs-12">
@@ -34,10 +34,10 @@
                  
                 </div>
            
-                <div class="col-md-6 col-xs-12">
+                <div class="col-md-3 col-xs-12">
                         <div class="control-group">
-                        <label class="control-label" for="Process"> </label> 
-                            <div class="controls" id="Process">
+                        <label class="control-label" for="ProcessMigrate"> </label> 
+                            <div class="controls" id="ProcessMigrate">
                             
                              <tm1-ui-process
                                 tm1-instance="dev"
@@ -47,7 +47,7 @@
                                 tm1-parameter-pSourceElement="{{selections.version}}"
                                 tm1-parameter-pTargetElement="{{selections.versionTwo}}"
                                 tm1-parameter-pSkipRules="0"
-                                tm1-parameter-pDebug=1
+                                tm1-parameter-pDebug=0
                                 tm1-display-name="Version Migration"
                                 tm1-message-running="Migration in Progress"
                                 tm1-message-success="Migration Success"
@@ -59,6 +59,30 @@
                         
                 </div>   
 
+                <div class="col-md-3 col-xs-12">
+                        <div class="control-group">
+                        <label class="control-label" for="ProcessClear"> </label> 
+                            <div class="controls" id="ProcessClear">
+                            
+                             <tm1-ui-process
+                                tm1-instance="dev"
+                                tm1-ui-button-class="{{values.processButtonTheme}}"
+                                tm1-name="Bedrock.Cube.Data.Clear"
+                                tm1-parameter-pCube="General Ledger"
+                                tm1-parameter-pDimension="Version"
+                                tm1-parameter-pFilter="Version:{{selections.versionTwo}}"
+                                tm1-parameter-pDebug=0
+                                tm1-display-name="Version Clear"
+                                tm1-message-running="Clear in Progress"
+                                tm1-message-success="Clear Success"
+                                tm1-message-error="Clear Error"
+                                tm1-refresh-page="true">
+                            </tm1-ui-process>
+                            </div>
+                    </div>
+                        
+                </div>   
+                
             </div>
         </div>
        

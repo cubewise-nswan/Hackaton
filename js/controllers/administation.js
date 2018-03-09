@@ -13,7 +13,7 @@ app.controller('administationCtrl', ['$scope', '$rootScope', '$log', '$tm1Ui', '
         version:'Actual'
     };
     $scope.lists = {};
-    $scope.values = {};
+    $scope.values = {processButtonTheme:"clear-button"};
     $scope.page = {};
 	$scope.page.table = {
         fromOperatingProfit:[]
