@@ -1,4 +1,4 @@
-<div ng-controller="administationCtrl" ng-if="$root.titles['Year'] != '' && $root.titles['Region'] != '' && $root.titles['Version'] != ''">
+<div ng-controller="administationCtrl" ng-if="$root.titles['Year'] != '' && $root.titles['General Ledger Measure'] != '' && $root.titles['Department'] != '' && $root.titles['Currency'] != ''  && $root.titles['Region'] != '' && $root.titles['Version'] != ''">
 
         <tm1-ui-element-list
             tm1-instance="dev"
@@ -9,33 +9,54 @@
          </tm1-ui-element-list>
 
     <div class="row" >
-        <div class="col-md-6">
-            <h1><i class="fa fa-wrench"></i> Data Administation {{$root.titles['Year']}} | {{$root.titles['Region']}} | {{$root.titles['Version']}}</h1>
+        <div class="col-md-6 col-xs-12">
+            <h3><i class="fa fa-wrench"></i> Data Administation <br />
+            <small>{{$root.titles['Year']}} | <tm1-ui-dbra tm1-instance="dev" tm1-dimension="Region" tm1-element="{{$root.titles['Region']}}" tm1-attribute="Description" tm1-read-only="true"></tm1-ui-dbra> | 
+            <tm1-ui-dbra tm1-instance="dev" tm1-dimension="Version" tm1-element="{{$root.titles['Version']}}" tm1-attribute="Description" tm1-read-only="true"></tm1-ui-dbra></small></h3>
         </div>
-        <div class="offset-md-11 col-md-6">
+        <div class="col-md-6 col-xs-12">
             <div class="row">
-                <div class="col-md-3">     
-                 <h3>Destination Version </h3>
+                <div class="col-md-6 col-xs-12 ">     
+                    <div class="control-group">
+                        <label class="control-label" for="Destination">Destination Version </label> 
+                            <div class="controls" id="Destination">
+                            
+                             <tm1-ui-subnm 
+                             tm1-instance="dev" 
+                             tm1-dimension="Version" 
+                             tm1-subset="Default" 
+                             tm1-select-only="true" 
+                             tm1-attribute="Description" 
+                             tm1-default-element="3" 
+                             ng-model="selections.versionTwo"></tm1-ui-subnm>
+                            </div>
+                    </div>
+                 
                 </div>
-                <div class="col-md-3">
-                        <tm1-ui-subnm tm1-instance="dev" tm1-dimension="Version" tm1-subset="Default" tm1-select-only="true" tm1-attribute="Description" tm1-default-element="1" ng-model="selections.versionTwo"></tm1-ui-subnm>
-                </div>
-                <div class="col-md-3">
-                        <tm1-ui-process
-                            tm1-instance="dev"
-                            tm1-name="Bedrock.Cube.Data.Copy"
-                            tm1-parameter-pCube="General Ledger"
-                            tm1-parameter-pDimension="Version"
-                            tm1-parameter-pSourceElement="{{selections.version}}"
-                            tm1-parameter-pTargetElement="{{selections.versionTwo}}"
-                            tm1-parameter-pSkipRules="0"
-                            tm1-parameter-pDebug=1
-                            tm1-display-name="Version Migration"
-                            tm1-message-running="Migration in Progress"
-                            tm1-message-success="Migration Success"
-                            tm1-message-error="Migration Error"
-                            tm1-refresh-page="true">
-                         </tm1-ui-process>
+           
+                <div class="col-md-6 col-xs-12">
+                        <div class="control-group">
+                        <label class="control-label" for="Process"> </label> 
+                            <div class="controls" id="Process">
+                            
+                             <tm1-ui-process
+                                tm1-instance="dev"
+                                tm1-name="Bedrock.Cube.Data.Copy"
+                                tm1-parameter-pCube="General Ledger"
+                                tm1-parameter-pDimension="Version"
+                                tm1-parameter-pSourceElement="{{selections.version}}"
+                                tm1-parameter-pTargetElement="{{selections.versionTwo}}"
+                                tm1-parameter-pSkipRules="0"
+                                tm1-parameter-pDebug=1
+                                tm1-display-name="Version Migration"
+                                tm1-message-running="Migration in Progress"
+                                tm1-message-success="Migration Success"
+                                tm1-message-error="Migration Error"
+                                tm1-refresh-page="true">
+                            </tm1-ui-process>
+                            </div>
+                    </div>
+                        
                 </div>   
 
             </div>
@@ -43,88 +64,85 @@
        
     </div>
 
-    <div class="row">
-        <div class="col-md-3">
-        </div>
-    </div>
+     
 
     <div class="row">
-
-      <div class="col-md-3">
+ 
+      <div class="col-md-6 col-xs-6">
           <div class="panel panel-default">
               <div class="panel-heading" style="font-size: 3em;">
                     <tm1-ui-dbr-read-only
                         tm1-instance="dev"
                         tm1-cube="General Ledger"
-                        tm1-elements="{{selections.version}},{{selections.year}},Year,{{selections.currency}},1,{{selections.department}},Operating Profit,Amount"
+                        tm1-elements="{{selections.version}},{{$root.titles['Year']}},Year,{{selections.currency}},1,{{$root.titles['Department']}},Operating Profit,Amount"
                         tm1-format-percentage="false"
                         tm1-format-parenthesis="true"
                         ng-model="page.panelfromOperatingProfit">
                     </tm1-ui-dbr-read-only>
 
                   <div class="row">
-                        <div class="col-md-12" style="font-size: 0.5em;">Operating Profit</div>
-                        <div class="col-md-12" style="font-size: 0.5em;">{{selections.version}}</div>
+                        <div class="col-md-12" style="font-size: 0.5em;">  <tm1-ui-dbra tm1-instance="dev" tm1-dimension="Version" tm1-element="{{selections.version}}" tm1-attribute="Description" tm1-read-only="true"></tm1-ui-dbra> Operating Profit</div>
+                       
                     </div>
               </div>
           </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-md-3 col-xs-6" ng-show="false">
           <div class="panel panel-info">
               <div class="panel-heading" style="font-size: 3em;">
                     <tm1-ui-dbr-read-only
                         tm1-instance="dev"
                         tm1-cube="General Ledger"
-                        tm1-elements="{{selections.version}},{{selections.year}},Year,{{selections.currency}},1,{{selections.department}},Other Income and Expense,Amount"
+                        tm1-elements="{{selections.version}},{{$root.titles['Year']}},Year,{{selections.currency}},1,{{$root.titles['Department']}},Other Income and Expense,Amount"
                         tm1-format-percentage="false"
                         tm1-format-parenthesis="true"
                         ng-model="page.panelfromOther">
                     </tm1-ui-dbr-read-only>
 
                   <div class="row">
-                        <div class="col-md-12" style="font-size: 0.5em;">Other Income and Expense</div>
-                        <div class="col-md-12" style="font-size: 0.5em;">{{selections.version}}</div>
+                        <div class="col-md-12" style="font-size: 0.5em;">      <tm1-ui-dbra tm1-instance="dev" tm1-dimension="Version" tm1-element="{{selections.version}}" tm1-attribute="Description" tm1-read-only="true"></tm1-ui-dbra> Other Income and Expense</div>
+                        
                     </div>
               </div>
           </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-md-6 col-xs-6">
             <div class="panel panel-default">
                 <div class="panel-heading" style="font-size: 3em;">
                       <tm1-ui-dbr-read-only
                           tm1-instance="dev"
                           tm1-cube="General Ledger"
-                          tm1-elements="{{selections.versionTwo}},{{selections.year}},Year,{{selections.currency}},1,{{selections.department}},Operating Profit,Amount"
+                          tm1-elements="{{selections.versionTwo}},{{$root.titles['Year']}},Year,{{selections.currency}},1,{{$root.titles['Department']}},Operating Profit,Amount"
                           tm1-format-percentage="false"
                           tm1-format-parenthesis="true"
                           ng-model="page.paneltoOperatingProfit">
                       </tm1-ui-dbr-read-only>
   
                     <div class="row">
-                          <div class="col-md-12" style="font-size: 0.5em;">Operating Profit</div>
-                          <div class="col-md-12" style="font-size: 0.5em;">{{selections.versionTwo}}</div>
+                          <div class="col-md-12" style="font-size: 0.5em;"> <tm1-ui-dbra tm1-instance="dev" tm1-dimension="Version" tm1-element="{{selections.versionTwo}}" tm1-attribute="Description" tm1-read-only="true"></tm1-ui-dbra> Operating Profit</div>
+                          
                       </div>
                 </div>
             </div>
         </div>
   
-        <div class="col-md-3">
+        <div class="col-md-3 col-xs-6"  ng-show="false">
             <div class="panel panel-info">
                 <div class="panel-heading" style="font-size: 3em;">
                       <tm1-ui-dbr-read-only
                           tm1-instance="dev"
                           tm1-cube="General Ledger"
-                          tm1-elements="{{selections.versionTwo}},{{selections.year}},Year,{{selections.currency}},1,{{selections.department}},Other Income and Expense,Amount"
+                          tm1-elements="{{selections.versionTwo}},{{$root.titles['Year']}},Year,{{selections.currency}},1,{{$root.titles['Department']}},Other Income and Expense,Amount"
                           tm1-format-percentage="false"
                           tm1-format-parenthesis="true"
                           ng-model="page.paneltoOther">
                       </tm1-ui-dbr-read-only>
   
                     <div class="row">
-                          <div class="col-md-12" style="font-size: 0.5em;">Other Income and Expense</div>
-                          <div class="col-md-12" style="font-size: 0.5em;">{{selections.versionTwo}}</div>
+                          <div class="col-md-12" style="font-size: 0.5em;"><tm1-ui-dbra tm1-instance="dev" tm1-dimension="Version" tm1-element="{{selections.versionTwo}}" tm1-attribute="Description" tm1-read-only="true"></tm1-ui-dbra> Other Income and Expense</div>
+                           
                       </div>
                 </div>
             </div>
@@ -132,73 +150,30 @@
   
     </div>
 
-    <div class="row">
+    <div  class="row other-pages">
 
-      <div class="col-md-6">
+      <div class="col-md-6 col-xs-12">
           <div class="panel panel-primary">
               <div class="panel-heading">
-                  Table
+                  <tm1-ui-dbra tm1-instance="dev" tm1-dimension="Version" tm1-element="{{selections.version}}" tm1-attribute="Description" tm1-read-only="true"></tm1-ui-dbra> Table
               </div>
               <div class="panel-body">
-                    <tm1-ui-dbr-hidden 
-                        tm1-instance="dev"
-                        tm1-cube="General Ledger"
-                        tm1-elements="{{selections.version}},{{selections.year}},Year,{{selections.currency}},1,{{selections.department}},Operating Profit,Amount"
-                        ng-model="page.fromTotalOperatingProfit">
-                   </tm1-ui-dbr-hidden>
+                     
 
-                   <hello-world ng-if="lists.region.length" tm1-instance="dev" selections="selections" lists-region="lists.region"> </hello-world>
+                   <hello-world ng-if="lists.region.length" tm1-instance="dev" year="{{$root.titles['Year']}}" department="{{$root.titles['Department']}}" version="{{selections.version}}" selections="selections" lists-region="lists.region"> </hello-world>
               </div>
           </div>
       </div>
       
-      <div class="col-md-6">
+      <div class="col-md-6 col-xs-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    Table
+                    <tm1-ui-dbra tm1-instance="dev" tm1-dimension="Version" tm1-element="{{selections.versionTwo}}" tm1-attribute="Description" tm1-read-only="true"></tm1-ui-dbra> Table
                 </div>
                 <div class="panel-body">
-                      <tm1-ui-dbr-hidden 
-                          tm1-instance="dev"
-                          tm1-cube="General Ledger"
-                          tm1-elements="{{selections.versionTwo}},{{selections.year}},Year,{{selections.currency}},1,{{selections.department}},Operating Profit,Amount"
-                         
-                          ng-model="page.toTotalOperatingProfit">
-                     </tm1-ui-dbr-hidden>
+                   
   
-                    <table class="table table-striped">
-                        <tr>
-                            <th>Region</th>
-                            <th>Operating Profit</th>
-                            <th>Satuation</th>
-                        </tr>
-                        <tr ng-repeat="item in lists.region">
-                            <td>{{item.alias}}
-                              
-                            </td>
-                          
-                            <td>
-                              <tm1-ui-dbr-read-only
-                                  tm1-instance="dev"
-                                  tm1-cube="General Ledger"
-                                  tm1-elements="{{selections.versionTwo}},{{selections.year}},Year,{{selections.currency}},{{item.key}},{{selections.department}},Operating Profit,Amount"
-                                  tm1-format-percentage="false"
-                                  tm1-format-parenthesis="true"
-                                  ng-model="page.table.toOperatingProfit[$index]">
-                              </tm1-ui-dbr-read-only>
-                            </td>
-                            <td>
-                                    <div class="progress" ng-if="page.table.toOperatingProfit[$index] && page.toTotalOperatingProfit">
-                                            <div class="progress-bar" 
-                                            role="progressbar" 
-                                            aria-valuenow="{{page.table.toOperatingProfit[$index]}}" 
-                                            aria-valuemin="0" 
-                                            aria-valuemax="{{page.toTotalOperatingProfit}}" 
-                                            style="width: {{(page.table.toOperatingProfit[$index] / page.toTotalOperatingProfit)*100 }}%;"><span class="sr-only"></span></div>
-                                    </div>                            
-                                </td>
-                        </tr>
-                    </table>
+                   <hello-world ng-if="lists.region.length" tm1-instance="dev" year="{{$root.titles['Year']}}" department="{{$root.titles['Department']}}" version="{{selections.versionTwo}}" selections="selections" lists-region="lists.region"> </hello-world>
                 </div>
             </div>
         </div>

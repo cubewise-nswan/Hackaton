@@ -7,7 +7,7 @@ app.controller('administationCtrl', ['$scope', '$rootScope', '$log', '$tm1Ui', '
     * 
     *     For more information: https://github.com/cubewise-code/canvas-best-practice
     */
-    
+    $rootScope.pageTitle = 'admin';
     $scope.defaults = {};
     $scope.selections = {
         version:'Actual'
@@ -19,10 +19,10 @@ app.controller('administationCtrl', ['$scope', '$rootScope', '$log', '$tm1Ui', '
         fromOperatingProfit:[]
     };
 	
-    $scope.selections.version=$rootScope.titles['Version'];
-    $scope.selections.year=$rootScope.titles['Year'];
-    $scope.selections.currency=$rootScope.titles['Currency'];
-    $scope.selections.department=$rootScope.titles['Department'];
+    $scope.selections.version= $rootScope.titles['Version'];
+    $scope.selections.year = $rootScope.titles['Year'];
+    $scope.selections.currency = $rootScope.titles['Currency'];
+    $scope.selections.department = $rootScope.titles['Department'];
 
    
 }]);

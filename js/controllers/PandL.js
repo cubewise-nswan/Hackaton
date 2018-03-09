@@ -7,7 +7,7 @@ app.controller('PandLCtrl', ['$scope', '$rootScope', '$tm1Ui', function($scope, 
     * 
     *     For more information: https://github.com/cubewise-code/canvas-best-practice
     */
-    
+    $rootScope.pageTitle = 'pnl';
     $scope.defaults = {};
     $scope.selections = {};
     $scope.lists = {};

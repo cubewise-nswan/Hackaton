@@ -2,9 +2,12 @@
     padding:20px;
     left:60px; 
     padding-top:60px;
+    padding-right:20px;
     display:block;
-    background-color:#ccc;
+    background-color:#428bca;
     width:100%; 
+    color:#fff;
+    z-index:2;
  
 }
 .tm1-ui-rpt-row-element {
@@ -18,4 +21,18 @@
     display:inline-block;
     right:0px;
     top:0px;
+}
+ .other-pages{
+    page-break-before: always;
+}
+#page-view {
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-top: 0px;
+}
+.control-label{
+    padding:5px;
+    float:right;
+    right:0px;
+    font-size:x-small;
 }

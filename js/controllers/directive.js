@@ -4,6 +4,9 @@
             return {
                 templateUrl: 'html/table.html',
                 scope:{
+                    department:'@',
+                    version:'@',
+                    year:'@',
                     listsRegion:'=',
                     selections: '=',
                     tm1Instance: '@'

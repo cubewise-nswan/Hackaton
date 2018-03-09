@@ -1,11 +1,17 @@
  <table class="table table-striped">
+       <tm1-ui-dbr-hidden 
+                        tm1-instance="dev"
+                        tm1-cube="General Ledger"
+                        tm1-elements="{{version}},{{year}},Year,{{selections.currency}},1,{{department}},Operating Profit,Amount"
+                        ng-model="page.fromTotalOperatingProfit">
+                   </tm1-ui-dbr-hidden>
                       <tr>
                           <th>Region</th>
                           <th>Operating Profit</th>
-                          <th>Satuation</th>
+                          <th>Saturation</th>
                       </tr>
-                      <tr ng-repeat="item in listsRegion track by $index">
-                          <td>{{item.alias}}
+                      <tr ng-repeat="item in listsRegion track by $index" style="min-height:40px;">
+                          <td>{{item.alias}} 
                             
                           </td>
                         
@@ -13,13 +19,14 @@
                             <tm1-ui-dbr-read-only
                                 tm1-instance="dev"
                                 tm1-cube="General Ledger"
-                                tm1-elements="{{selections.version}},{{selections.year}},Year,{{selections.currency}},{{item.key}},{{selections.department}},Operating Profit,Amount"
+                                tm1-elements="{{version}},{{year}},Year,{{selections.currency}},{{item.key}},{{department}},Operating Profit,Amount"
                                 tm1-format-percentage="false"
                                 tm1-format-parenthesis="true"
                                 ng-model="page.table.fromOperatingProfit[$index]">
                             </tm1-ui-dbr-read-only>
                           </td>
                           <td>
+                            
                                 <div class="progress" ng-if="page.table.fromOperatingProfit[$index] && page.fromTotalOperatingProfit">
                                         <div class="progress-bar" 
                                         role="progressbar" 
